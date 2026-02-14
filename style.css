@@ -43,7 +43,7 @@ button {
   transition: transform 0.2s ease;
   min-width: 120px;
   min-height: 50px;
-  touch-action: manipulation;
+  touch-action: none;
   z-index: 10;
 }
 
@@ -150,6 +150,7 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 
 
 
