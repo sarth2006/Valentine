@@ -86,6 +86,8 @@ function moveNoButton() {
   noBtn.style.top = `${y}px`;
 }
 
+// For desktop hover
+noBtn.addEventListener("mouseenter", moveNoButton);
 // ❌ NO button logic
 noBtn.addEventListener("click", () => {
   // 🔊 play NO song
@@ -123,11 +125,7 @@ noBtn.addEventListener("click", () => {
 });
 
 // 📱 Mobile support
-noBtn.addEventListener("touchstart", () => {
-  if (noBtn.style.display !== "none") {
-    moveNoButton();
-  }
-});
+
 
 // 💖 YES button logic
 yesBtn.addEventListener("click", () => {
@@ -170,3 +168,4 @@ yesBtn.addEventListener("click", () => {
 `;
 
 });
+
