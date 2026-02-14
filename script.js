@@ -8,6 +8,9 @@ const songText = document.getElementById("songText");
 const confettiContainer = document.getElementById("confetti-container");
 let yesChosen = false;
 let noSongStarted = false;
+const yesWrap = document.getElementById("yesWrap");
+const noWrap = document.getElementById("noWrap");
+
 
 // 🎵 Audio elements (make sure these IDs exist in index.html)
 const noSong = document.getElementById("noSong");
@@ -74,9 +77,9 @@ function launchConfettiMultiple(times, gap = 300) {
 
 function moveNoButton() {
   const boxRect = buttonsBox.getBoundingClientRect();
-  const btnRect = noBtn.getBoundingClientRect();
+  const btnRect = noWrap.getBoundingClientRect();
 
-  const padding = 10;
+  const padding = 12;
 
   const maxX = boxRect.width - btnRect.width - padding;
   const maxY = boxRect.height - btnRect.height - padding;
@@ -84,8 +87,8 @@ function moveNoButton() {
   const x = padding + Math.random() * maxX;
   const y = padding + Math.random() * maxY;
 
-  noBtn.style.left = `${x}px`;
-  noBtn.style.top = `${y}px`;
+  noWrap.style.left = `${x}px`;
+  noWrap.style.top = `${y}px`;
 }
 
 noBtn.addEventListener("pointerdown", (e) => {
@@ -108,8 +111,9 @@ noBtn.addEventListener("pointerdown", (e) => {
   yesScale += 0.4;
   noScale = Math.max(0.3, noScale - 0.05);
 
-  yesBtn.style.transform = `scale(${yesScale})`;
-  noBtn.style.transform = `scale(${noScale})`;
+  yesWrap.style.transform = `scale(${yesScale})`;
+  noWrap.style.transform = `scale(${noScale})`;
+
 
   // Text change
   noBtn.innerText = getRandomText(noTexts);
@@ -119,7 +123,7 @@ noBtn.addEventListener("pointerdown", (e) => {
   setTimeout(moveNoButton, 60);
 
   if (noClickCount >= 7) {
-    noBtn.style.display = "none";
+    noWrap.style.display = "none";
   }
 });
 
@@ -168,6 +172,7 @@ yesBtn.addEventListener("click", () => {
 `;
 
 });
+
 
 
 
