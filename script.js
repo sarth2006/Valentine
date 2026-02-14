@@ -92,7 +92,6 @@ function moveNoButton() {
 }
 
 noBtn.addEventListener("pointerdown", (e) => {
-  e.preventDefault(); // 🔑 critical
 
   // 🎵 play NO song (only once)
   if (!yesChosen && !noSongStarted) {
@@ -172,6 +171,7 @@ yesBtn.addEventListener("click", () => {
 `;
 
 });
+
 
 
 
