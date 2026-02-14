@@ -31,7 +31,8 @@ h1 {
   touch-action: manipulation;
   position: relative;
   width: 100%;
-  height: 150px;
+  height: 220px;
+  margin-top: 30px;
 }
 
 .btn-wrap {
@@ -54,6 +55,10 @@ button {
 }
 
 #yes {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
   background: #ff4d6d;
   color: white;
 }
@@ -62,7 +67,7 @@ button {
   background: white;
   color: black;
   position: absolute;
-  top: 60px;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -156,6 +161,7 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 
 
 
