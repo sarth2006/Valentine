@@ -88,43 +88,41 @@ function moveNoButton() {
   noBtn.style.top = `${y}px`;
 }
 
-// For desktop hover
-noBtn.addEventListener("mouseenter", moveNoButton);
-// ❌ NO button logic
-noBtn.addEventListener("click", () => {
-  // 🔊 play NO song
+noBtn.addEventListener("pointerdown", (e) => {
+  e.preventDefault(); // 🔑 critical
+
+  // 🎵 play NO song (only once)
   if (!yesChosen && !noSongStarted) {
     noSong.volume = 0.5;
     noSong.play();
     noSongStarted = true;
 
     nowPlaying.style.display = "flex";
-    songImg.src = "no.jpg.jpeg"; // make sure filename matches
+    songImg.src = "no.jpg.jpeg";
     songText.innerText = "Playing : Ahista from Laila Majnu";
   }
-
 
   noClickCount++;
 
   // Resize logic
   yesScale += 0.4;
-  noScale = Math.max(0.3, noScale - 0.05); // prevent negative scale
+  noScale = Math.max(0.3, noScale - 0.05);
 
   yesBtn.style.transform = `scale(${yesScale})`;
   noBtn.style.transform = `scale(${noScale})`;
 
-  // Random text
+  // Text change
   noBtn.innerText = getRandomText(noTexts);
   yesBtn.innerText = getRandomText(yesTexts);
 
-  // 🔑 move AFTER click finishes
-  setTimeout(moveNoButton, 80);
+  // Move AFTER logic
+  setTimeout(moveNoButton, 60);
 
-  // Remove NO after enough clicks
   if (noClickCount >= 7) {
     noBtn.style.display = "none";
   }
 });
+
 
 // 📱 Mobile support
 
@@ -170,6 +168,7 @@ yesBtn.addEventListener("click", () => {
 `;
 
 });
+
 
 
 
