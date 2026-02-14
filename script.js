@@ -76,11 +76,13 @@ function moveNoButton() {
   const boxRect = buttonsBox.getBoundingClientRect();
   const btnRect = noBtn.getBoundingClientRect();
 
-  const maxX = boxRect.width - btnRect.width;
-  const maxY = boxRect.height - btnRect.height;
+  const padding = 10;
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
+  const maxX = boxRect.width - btnRect.width - padding;
+  const maxY = boxRect.height - btnRect.height - padding;
+
+  const x = padding + Math.random() * maxX;
+  const y = padding + Math.random() * maxY;
 
   noBtn.style.left = `${x}px`;
   noBtn.style.top = `${y}px`;
@@ -168,5 +170,6 @@ yesBtn.addEventListener("click", () => {
 `;
 
 });
+
 
 
