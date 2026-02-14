@@ -8,6 +8,7 @@ const songText = document.getElementById("songText");
 const confettiContainer = document.getElementById("confetti-container");
 let yesChosen = false;
 let noSongStarted = false;
+let audioUnlocked = false;
 const yesWrap = document.getElementById("yesWrap");
 const noWrap = document.getElementById("noWrap");
 
@@ -42,6 +43,18 @@ const yesTexts = [
   "Ji Pkkaaa!! 💕💖",
   "Yess Babbyy 💘🥰"
 ];
+
+function unlockAudio() {
+  if (audioUnlocked) return;
+
+  noSong.muted = true;
+  noSong.play().then(() => {
+    noSong.pause();
+    noSong.currentTime = 0;
+    noSong.muted = false;
+    audioUnlocked = true;
+  }).catch(() => {});
+}
 
 function launchConfetti() {
   const colors = ["#ff4d6d", "#ff9a9e", "#fad0c4", "#fff", "#ffccd5"];
@@ -91,12 +104,15 @@ function moveNoButton() {
   noWrap.style.top = `${y}px`;
 }
 
-noBtn.addEventListener("pointerdown", (e) => {
-
+noBtn.addEventListener("pointerdown", () => {
+  unlockAudio();
   // 🎵 play NO song (only once)
   if (!yesChosen && !noSongStarted) {
     noSong.volume = 0.5;
     noSong.play();
+    noSong.play().catch(err => {
+      console.log("NO song play blocked:", err);
+    })
     noSongStarted = true;
 
     nowPlaying.style.display = "flex";
@@ -171,6 +187,7 @@ yesBtn.addEventListener("click", () => {
 `;
 
 });
+
 
 
 
