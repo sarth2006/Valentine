@@ -39,6 +39,7 @@ button {
   border-radius: 14px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  touch-action: manipulation;
 }
 
 #yes {
@@ -143,3 +144,4 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
