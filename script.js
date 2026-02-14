@@ -115,8 +115,8 @@ noBtn.addEventListener("click", () => {
   noBtn.innerText = getRandomText(noTexts);
   yesBtn.innerText = getRandomText(yesTexts);
 
-  // Move NO
-  moveNoButton();
+  // 🔑 move AFTER click finishes
+  setTimeout(moveNoButton, 80);
 
   // Remove NO after enough clicks
   if (noClickCount >= 7) {
@@ -168,4 +168,5 @@ yesBtn.addEventListener("click", () => {
 `;
 
 });
+
 
